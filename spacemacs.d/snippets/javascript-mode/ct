@@ -1,0 +1,1 @@
+	console.trace(${0:label});

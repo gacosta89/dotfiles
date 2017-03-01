@@ -1,0 +1,7 @@
+	try {
+		${1}
+	} catch (${2:e}) {
+		${0:/* handle error */}
+	} finally {
+		${3:/* be executed regardless of the try / catch result*/}
+	}

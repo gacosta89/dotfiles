@@ -1,0 +1,1 @@
+	JSON.parse(${0:jstr});

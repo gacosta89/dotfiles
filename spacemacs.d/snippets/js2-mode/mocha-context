@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: mocha context
+# key: mctx
+# --
+context('$1', () => {
+    $0
+});
