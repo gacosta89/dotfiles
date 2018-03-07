@@ -1,3 +1,7 @@
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+export TERM="xterm-256color"
+
 source ~/bin/antigen.zsh
 
 # Load the oh-my-zsh's library.
@@ -16,12 +20,11 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 
 # Load the theme.
-antigen theme 3den
-
+antigen theme bhilburn/powerlevel9k powerlevel9k
 # Tell antigen that you're done.
 antigen apply
 
-export NVM_DIR="/home/gonzalo/.nvm"
+export NVM_DIR="/Users/olx-gonzalo/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # place this after nvm initialization!
@@ -48,3 +51,4 @@ load-nvmrc
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+

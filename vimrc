@@ -47,7 +47,6 @@ filetype plugin indent on    " required
 " Personal config
 scriptencoding utf-8
 set encoding=utf-8
-set directory=$HOME/.vim/swapfiles
 set incsearch
 set hlsearch
 set path+=**
