@@ -1,6 +1,5 @@
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-export TERM="xterm-256color"
 
 source ~/bin/antigen.zsh
 
@@ -24,8 +23,6 @@ antigen theme bhilburn/powerlevel9k powerlevel9k
 # Tell antigen that you're done.
 antigen apply
 
-export NVM_DIR="/Users/olx-gonzalo/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
