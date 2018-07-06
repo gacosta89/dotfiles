@@ -32,7 +32,6 @@ values."
    dotspacemacs-configuration-layers
    '(
      csv
-     ;; (keyboard-layout :variables kl-layout 'dvorak)
      octave
      clojure
      typescript
@@ -48,7 +47,6 @@ values."
      helm
      (shell :variables
             shell-default-position 'bottom
-            shell-default-term-shell "/usr/local/bin/zsh"
             shell-default-height 40
             )
      )
@@ -57,7 +55,9 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      add-node-modules-path)
+                                      add-node-modules-path
+                                      prettier-js
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -137,7 +137,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -304,7 +304,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-linum-mode)
-  (add-hook 'rjsx-mode-hook 'add-node-modules-path)
+  (add-hook 'rjsx-mode-hook 'add-node-modules-path 'prettier-js-mode)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
   (setq auto-save-default nil)
   (setq-default js2-basic-offset 4)

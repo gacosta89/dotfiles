@@ -1,16 +1,23 @@
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-
+source ~/dotfiles/powerline/.powerlevel9kenv
 source ~/bin/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle aws
+antigen bundle cp
+antigen bundle docker
+antigen bundle docker-compose
 antigen bundle git
-# antigen bundle heroku
-# antigen bundle pip
-# antigen bundle lein
+antigen bundle man
+antigen bundle node
+antigen bundle npm
+antigen bundle nvm
+antigen bundle yarn
+antigen bundle pip
+antigen bundle pow
+antigen bundle sudo
 antigen bundle command-not-found
 
 # Syntax highlighting bundle.
