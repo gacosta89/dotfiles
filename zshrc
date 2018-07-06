@@ -48,4 +48,3 @@ load-nvmrc
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
-
