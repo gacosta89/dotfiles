@@ -23,8 +23,8 @@
         js2-refactor
         rjsx-mode
         tern
-        prettier-js
-        ))
+        nodejs-repl
+        prettier-js))
 
 (defun itome-react/init-rjsx-mode ()
   (use-package rjsx-mode
@@ -147,3 +147,18 @@
     (progn
       (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
         "=" 'prettier-js))))
+
+(defun itome-react/init-nodejs-repl ()
+  (use-package nodejs-repl
+    :defer t
+    :init
+    (progn
+      (spacemacs/declare-prefix-for-mode 'rjsx-mode "me" "eval")
+      (spacemacs/declare-prefix-for-mode 'rjsx-mode "mn" "nodejs")
+      (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
+        "'" 'spacemacs//nodejs-start-repl
+        "ee" 'nodejs-repl-send-last-expression
+        "er" 'nodejs-repl-send-region
+        "el" 'nodejs-repl-send-line
+        "nf" 'nodejs-repl-load-file
+        "ns" 'nodejs-repl-switch-to-repl))))
