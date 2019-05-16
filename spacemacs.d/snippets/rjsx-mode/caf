@@ -2,5 +2,5 @@
 # name: const arrow function
 # key: caf
 # --
-const ${1:name} = (${2:params}) =>
+const ${1:name} = ${2:params} =>
       $0

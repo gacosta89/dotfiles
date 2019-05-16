@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: const arrow function
+# key: cafp
+# --
+const ${1:name} = (${2:params}) =>
+      $0

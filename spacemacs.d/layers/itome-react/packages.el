@@ -13,7 +13,6 @@
       '(
         rjsx-mode
         company
-        company-tern
         emmet-mode
         evil-matchit
         flycheck
@@ -22,7 +21,6 @@
         js-doc
         js2-refactor
         rjsx-mode
-        tern
         nodejs-repl
         prettier-js))
 
@@ -59,16 +57,13 @@
 (defun itome-react/post-init-company ()
   (spacemacs|add-company-hook rjsx-mode))
 
-(defun itome-react/post-init-company-tern ()
-  (push 'company-tern company-backends-rjsx-mode))
-
 (defun itome-react/post-init-emmet-mode ()
   (add-hook 'rjsx-mode-hook 'emmet-mode)
   (add-hook 'rjsx-mode-hook 'spacemacs//setup-emmet-mode-for-react))
 
 (defun itome-react/post-init-flycheck ()
   (dolist (mode '(rjsx-mode))
-    (spacemacs/add-flycheck-hook mode)))
+    (spacemacs/enable-flycheck mode)))
 
 (defun itome-react/post-init-ggtags ()
   (add-hook 'rjsx-mode-hook #'spacemacs/ggtags-mode-enable))
@@ -134,11 +129,6 @@
     "k" 'js2r-kill
     "xmj" 'js2r-move-line-down
     "xmk" 'js2r-move-line-up))
-
-(defun itome-react/post-init-tern ()
-  (add-hook 'rjsx-mode-hook 'tern-mode)
-  (spacemacs|hide-lighter tern-mode)
-  (spacemacs//set-tern-key-bindings 'rjsx-mode))
 
 (defun itome-react/init-prettier-js ()
   (use-package prettier-js

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import ramda
+# key: imra
+# --
+import * as R from "ramda"
