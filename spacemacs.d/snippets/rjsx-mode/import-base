@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import base
+# key: imbase
+# --
+import { $1 } from "components/Base"

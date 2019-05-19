@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import ui kit
+# key: imui
+# --
+import $1 from "ui-kit/$1";

@@ -65,6 +65,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
+   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -250,7 +251,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil then the last auto saved layouts are resumed automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
 
    ;; If non-nil, auto-generate layout name when creating new layouts. Only has
    ;; effect when using the "jump to layout by number" commands. (default nil)
@@ -299,7 +300,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup t
 
    ;; If non-nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
@@ -349,7 +350,7 @@ It should only modify the values of Spacemacs settings."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers 'relative
+   dotspacemacs-line-numbers nil
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -457,12 +458,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (setq theming-modifications
-        '(
-          (badwolf
-           (default :background "black")
-           (helm-ff-directory :background "black" :foreground "white")
-           (helm-source-header :background "black" :foreground "white"))))
   ;;;;;;;;;;;;;;;;;; add node modules ;;;;;;;;;;;;;;;;;;;;;
 
   ;;;###autoload
@@ -509,12 +504,21 @@ before packages are loaded."
   ;;;;;;;;;;;;;;;;;; add node modules ;;;;;;;;;;;;;;;;;;;;;
 
   (add-hook 'rjsx-mode-hook 'node-modules-to-path)
-  (add-hook 'json-mode-hook 'node-modules-to-path)
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
+  (add-hook 'json-mode-hook 'node-modules-to-path)
   (add-hook 'json-mode-hook 'prettier-js-mode)
+
+
+  ;;;;;;;;;;;;;;;;;; org ;;;;;;;;;;;;;;;;;;;;;
+
+  (setq org-todo-keywords '((sequence "TODO" "PROGRESS" "BLOCKED" "|" "DONE" "DELEGATED")))
+  (setq org-icalendar-include-todo t)
+
 
   (global-linum-mode)
   (setq auto-save-default nil)
+
+  ;;;;;;;;;;;;;;;;;; tabs config ;;;;;;;;;;;;;;;;;;;;;
 
   (setq coffee-tab-width 2) ; coffeescript
   (setq javascript-indent-level 2) ; javascript-mode
@@ -526,18 +530,7 @@ before packages are loaded."
   (setq css-indent-offset 2) ; css-mode
 
   (setq js2-strict-missing-semi-warning nil)
-  (setq js2-missing-semi-one-line-override nil)
-  ;; (setq cider-cljs-lein-repl
-  ;;       "(do (require 'figwheel-sidecar.repl-api)
-  ;;          (figwheel-sidecar.repl-api/start-figwheel!)
-  ;;          (figwheel-sidecar.repl-api/cljs-repl))")
-  (with-eval-after-load "helm"
-    (defun helm-persistent-action-display-window (&optional split-onewindow)
-      "Return the window that will be used for persistent action.
-        If SPLIT-ONEWINDOW is non-`nil' window is split in persistent action."
-      (with-helm-window
-       (setq helm-persistent-action-display-window (get-mru-window)))))
-  )
+  (setq js2-missing-semi-one-line-override nil))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

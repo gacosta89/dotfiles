@@ -29,7 +29,7 @@
     :defer t
     :init
     (progn
-      (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+      (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . rjsx-mode))
       (add-to-list 'auto-mode-alist '("\\.react.js\\'" . rjsx-mode))
       (add-to-list 'auto-mode-alist '("\\index.android.js\\'" . rjsx-mode))
       (add-to-list 'auto-mode-alist '("\\index.ios.js\\'" . rjsx-mode))
@@ -55,7 +55,7 @@
         "zC" 'js2-mode-toggle-hide-comments))))
 
 (defun itome-react/post-init-company ()
-  (spacemacs|add-company-hook rjsx-mode))
+  (spacemacs|add-company-backends :backends 'company-backends-rjsx-mode :modes rjsx-mode))
 
 (defun itome-react/post-init-emmet-mode ()
   (add-hook 'rjsx-mode-hook 'emmet-mode)
