@@ -1,23 +1,13 @@
 source ~/dotfiles/powerline/.powerlevel9kenv
 source ~/bin/antigen.zsh
-source ~/.bash_profile
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
-# antigen bundle aws
 antigen bundle cp
-# antigen bundle docker
-# antigen bundle docker-compose
-antigen bundle git
-antigen bundle man
 antigen bundle node
-# antigen bundle npm
 antigen bundle nvm
-# antigen bundle yarn
-antigen bundle pip
-antigen bundle pow
 antigen bundle sudo
 antigen bundle command-not-found
 
@@ -54,8 +44,12 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+if [[ $TERM = dumb ]]; then
+  unset zle_bracketed_paste
+fi
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"

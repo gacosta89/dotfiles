@@ -50,7 +50,6 @@ set encoding=utf-8
 set incsearch
 set hlsearch
 set path+=**
-set relativenumber
 set wildmenu
 syntax enable
 noremap <silent> <C-c> :nohlsearch<CR><C-l>
