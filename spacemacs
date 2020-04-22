@@ -44,9 +44,11 @@ This function should only modify configuration layer settings."
      osx
      org
      treemacs
+     lsp
      (shell :variables
             shell-default-position 'bottom
             shell-default-height 40
+            shell-default-term-shell "/bin/bash"
             )
      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; languages ;;;;;;;;;;;;;;;;;;;;;
      csv
@@ -56,7 +58,10 @@ This function should only modify configuration layer settings."
      yaml
      emacs-lisp
      markdown
-     itome-react
+     (react :variables
+            javascript-fmt-tool 'prettier
+            javascript-backend 'lsp
+            javascript-lsp-linter nil)
      )
 
    ;; List of additional packages that will be installed without being
@@ -66,13 +71,13 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(doom-themes)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(editorconfig)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -189,9 +194,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(badwolf
-                         spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(doom-nord
+                         doom-nord-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -200,7 +204,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(doom :separator wave :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -209,7 +213,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Menlo"
-                               :size 12
+                               :size 11
                                :weight normal
                                :width normal)
 
@@ -252,7 +256,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil then the last auto saved layouts are resumed automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
 
    ;; If non-nil, auto-generate layout name when creating new layouts. Only has
    ;; effect when using the "jump to layout by number" commands. (default nil)
@@ -351,7 +355,7 @@ It should only modify the values of Spacemacs settings."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'nil
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -504,8 +508,8 @@ before packages are loaded."
 
   ;;;;;;;;;;;;;;;;;; add node modules ;;;;;;;;;;;;;;;;;;;;;
 
-  (add-hook 'rjsx-mode-hook 'node-modules-to-path)
-  (add-hook 'rjsx-mode-hook 'prettier-js-mode)
+  ;; (add-hook 'rjsx-mode-hook 'node-modules-to-path)
+  ;; (add-hook 'rjsx-mode-hook 'prettier-js-mode)
   (add-hook 'json-mode-hook 'node-modules-to-path)
   (add-hook 'json-mode-hook 'prettier-js-mode)
 
@@ -526,8 +530,8 @@ before packages are loaded."
 
   (setq coffee-tab-width 2) ; coffeescript
   (setq javascript-indent-level 2) ; javascript-mode
-  (setq js-indent-level 2) ; js-mode
-  (setq js2-basic-offset 2) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+  ;; (setq js-indent-level 2) ; js-mode
+  ;; (setq js2-basic-offset 2) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
   (setq web-mode-markup-indent-offset 2) ; web-mode, html tag in html file
   (setq web-mode-css-indent-offset 2) ; web-mode, css in html file
   (setq web-mode-code-indent-offset 2) ; web-mode, js code in html file
@@ -543,7 +547,23 @@ before packages are loaded."
 
   (add-hook 'rxjs-mode-hook
             (lambda ()
-              (editorconfig-mode 0))))
+              (editorconfig-mode 0)))
+
+  ;;;;;;;;;;;;;;;;;;;; doom-themes ;;;;;;;;;;;;;;;;;;
+
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  ;; Enable flashing mode-line on errors
+  ;; (doom-themes-visual-bell-config)
+
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  (doom-themes-treemacs-config)
+
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 
 

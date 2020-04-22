@@ -20,7 +20,6 @@
   (emmet-mode 0)
   (setq-local emmet-expand-jsx-className? t))
 
-(defun spacemacs//nodejs-start-repl ()
-  "Start a nodejs REPL."
-  (interactive)
-  (nodejs-repl))
+(defun spacemacs//rjsx-setup-company ()
+  "Conditionally setup company based on backend."
+  (spacemacs/tern-setup-tern-company 'rjsx-mode))

@@ -22,6 +22,7 @@
         js2-refactor
         rjsx-mode
         nodejs-repl
+        tern
         prettier-js))
 
 (defun itome-react/init-rjsx-mode ()
@@ -55,7 +56,7 @@
         "zC" 'js2-mode-toggle-hide-comments))))
 
 (defun itome-react/post-init-company ()
-  (spacemacs|add-company-backends :backends 'company-backends-rjsx-mode :modes rjsx-mode))
+  (add-hook 'rjsx-mode-local-vars-hook #'spacemacs//rjsx-setup-company))
 
 (defun itome-react/post-init-emmet-mode ()
   (add-hook 'rjsx-mode-hook 'emmet-mode)
