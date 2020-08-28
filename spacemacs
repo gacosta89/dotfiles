@@ -33,7 +33,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(sql
+   '(vimscript
+     sql
      (spell-checking :variables
                      spell-checking-enable-by-default nil
                      enable-flyspell-auto-completion t)
@@ -217,8 +218,8 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Menlo"
-                               :size 11
+   dotspacemacs-default-font '("Ubuntu Mono"
+                               :size 30
                                :weight normal
                                :width normal)
 
@@ -310,7 +311,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup t
+   dotspacemacs-fullscreen-at-startup nil
 
    ;; If non-nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
@@ -319,7 +320,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
@@ -599,8 +600,7 @@ This function is called at the very end of Spacemacs initialization."
    ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
  '(evil-want-Y-yank-to-eol nil)
  '(hl-todo-keyword-faces
-   (quote
-    (("TODO" . "#dc752f")
+   '(("TODO" . "#dc752f")
      ("NEXT" . "#dc752f")
      ("THEM" . "#2d9574")
      ("PROG" . "#3a81c3")
@@ -614,12 +614,11 @@ This function is called at the very end of Spacemacs initialization."
      ("TEMP" . "#b1951d")
      ("FIXME" . "#dc752f")
      ("XXX" . "#dc752f")
-     ("XXXX" . "#dc752f"))))
- '(org-agenda-files (quote ("~/org/gtd.org")))
+     ("XXXX" . "#dc752f")))
+ '(org-agenda-files '("~/org/gtd.org"))
  '(package-selected-packages
-   (quote
-    (sqlup-mode sql-indent yapfify stickyfunc-enhance pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-cscope cython-mode company-anaconda blacken anaconda-mode pythonic phpunit phpcbf php-extras php-auto-yasnippets helm-gtags ggtags drupal-mode counsel-gtags company-php ac-php-core xcscope php-mode cider sesman yasnippet-snippets yaml-mode xterm-color web-mode web-beautify tagedit smeargle slim-mode shell-pop scss-mode sass-mode rjsx-mode reveal-in-osx-finder pug-mode prettier-js osx-trash osx-dictionary osx-clipboard orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain nodejs-repl multi-term mmm-mode markdown-toc markdown-mode magit-svn magit-gitflow magit-popup livid-mode skewer-mode launchctl json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc impatient-mode simple-httpd htmlize helm-org-rifle helm-gitignore helm-git-grep helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip evil-org evil-magit magit transient git-commit with-editor eshell-z eshell-prompt-extras esh-help emmet-mode csv-mode company-web web-completion-data company-tern dash-functional tern company-statistics company clojure-snippets cider-eval-sexp-fu queue parseedn clojure-mode parseclj a auto-yasnippet yasnippet ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump dotenv-mode doom-modeline diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent add-node-modules-path ace-link ace-jump-helm-line)))
- '(pdf-view-midnight-colors (quote ("#655370" . "#fbf8ef"))))
+   '(vimrc-mode dactyl-mode counsel swiper ivy sqlup-mode sql-indent yapfify stickyfunc-enhance pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-cscope cython-mode company-anaconda blacken anaconda-mode pythonic phpunit phpcbf php-extras php-auto-yasnippets helm-gtags ggtags drupal-mode counsel-gtags company-php ac-php-core xcscope php-mode cider sesman yasnippet-snippets yaml-mode xterm-color web-mode web-beautify tagedit smeargle slim-mode shell-pop scss-mode sass-mode rjsx-mode reveal-in-osx-finder pug-mode prettier-js osx-trash osx-dictionary osx-clipboard orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain nodejs-repl multi-term mmm-mode markdown-toc markdown-mode magit-svn magit-gitflow magit-popup livid-mode skewer-mode launchctl json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc impatient-mode simple-httpd htmlize helm-org-rifle helm-gitignore helm-git-grep helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip evil-org evil-magit magit transient git-commit with-editor eshell-z eshell-prompt-extras esh-help emmet-mode csv-mode company-web web-completion-data company-tern dash-functional tern company-statistics company clojure-snippets cider-eval-sexp-fu queue parseedn clojure-mode parseclj a auto-yasnippet yasnippet ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump dotenv-mode doom-modeline diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent add-node-modules-path ace-link ace-jump-helm-line))
+ '(pdf-view-midnight-colors '("#655370" . "#fbf8ef")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
