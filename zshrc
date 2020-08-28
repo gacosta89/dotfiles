@@ -52,4 +52,6 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="${HOME}/.composer/vendor/bin:/usr/local/opt/php@7.3/sbin:/usr/local/opt/php@7.3/bin:/usr/local/opt/mysql-client/bin:${HOME}/bin:$PATH"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home
+[ -f "/Users/gonzaloacosta/.ghcup/env" ] && source "/Users/gonzaloacosta/.ghcup/env" # ghcup-env

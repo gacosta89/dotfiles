@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import redux-mvc
+# key: immvc
+# --
+import {${1:name}} from "@redux-mvc/core"

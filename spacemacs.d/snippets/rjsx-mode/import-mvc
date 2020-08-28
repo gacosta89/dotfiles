@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: import redux-mvc
-# key: immvc
+# name: import redux-saga
+# key: imsaga
 # --
-import { createHandlers, createModula } from "redux-mvc"
+import { put, all, select, take, fork } from "redux-saga/effects"
